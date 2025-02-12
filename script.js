@@ -10,7 +10,7 @@ root.appendChild(div1);
 
 const h2 = document.createElement('h2');
 h2.classList.add('subtitle');
-h2.textContent = 'Click tombol dibawah untuk suit';
+h2.textContent = 'Click tombol di bawah untuk suit';
 div1.appendChild(h2);
 
 const button1 = document.createElement('button');
@@ -68,11 +68,35 @@ h3_6.classList.add('computer-choice');
 h3_6.textContent = '';
 div4.appendChild(h3_6);
 
+// Elemen untuk hasil total
+const div5 = document.createElement('div');
+div5.classList.add('container-result');
+root.appendChild(div5);
+
+const h3Menang = document.createElement('h3');
+h3Menang.classList.add('result-menang');
+h3Menang.textContent = 'Menang: 0';
+div5.appendChild(h3Menang);
+
+const h3Seri = document.createElement('h3');
+h3Seri.classList.add('result-seri');
+h3Seri.textContent = 'Seri: 0';
+div5.appendChild(h3Seri);
+
+const h3Kalah = document.createElement('h3');
+h3Kalah.classList.add('result-kalah');
+h3Kalah.textContent = 'Kalah: 0';
+div5.appendChild(h3Kalah);
+
 const images = [
   '/assets/jempol.jpg',
   '/assets/telunjuk.jpg',
   '/assets/kelingking.jpg',
 ];
+
+let totalMenang = 0;
+let totalSeri = 0;
+let totalKalah = 0;
 
 button1.addEventListener('click', () => {
   const playerChoice = Math.floor(Math.random() * images.length);
@@ -113,15 +137,22 @@ button1.addEventListener('click', () => {
 
       if (playerChoice === computerChoice) {
         h3.textContent = 'Seri';
+        totalSeri++;
       } else if (
         (playerChoice === 0 && computerChoice === 1) ||
         (playerChoice === 1 && computerChoice === 2) ||
         (playerChoice === 2 && computerChoice === 0)
       ) {
         h3.textContent = 'Kamu Menang';
+        totalMenang++;
       } else {
         h3.textContent = 'Kamu Kalah';
+        totalKalah++;
       }
+
+      h3Menang.textContent = `Menang: ${totalMenang}`;
+      h3Seri.textContent = `Seri: ${totalSeri}`;
+      h3Kalah.textContent = `Kalah: ${totalKalah}`;
     }
   }
 

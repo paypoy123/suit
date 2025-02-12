@@ -80,3 +80,12 @@ body {
   color: #333;
   font-size: 1.5em;
 }
+
+.container-result {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  font-size: 1.2em;
+}
